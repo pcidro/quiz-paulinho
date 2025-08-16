@@ -76,6 +76,12 @@ body {
   font-size: 16px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   width: 100%;
+  transition: all 0.3s ease;
+}
+
+.btn-respostas:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .resultado button {
