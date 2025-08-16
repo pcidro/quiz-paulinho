@@ -77,7 +77,9 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   width: 100%;
   transition: all 0.3s ease;
-  color: #1e2939;
+  color: #1e2939 !important;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .btn-respostas:hover {
