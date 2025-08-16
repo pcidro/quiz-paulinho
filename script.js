@@ -2,6 +2,7 @@ const quiz = document.getElementById("quiz");
 const pergunta = document.getElementById("pergunta");
 const respostas = document.getElementById("respostas");
 const resultado = document.getElementById("resultado");
+const feedback = document.getElementById("feedback");
 const numeroPergunta = document.getElementById("numero-pergunta");
 const pontuacao = document.getElementById("pontuacao");
 
@@ -37,6 +38,56 @@ const perguntas = [
     ],
     correta: 2,
   },
+
+  {
+    pergunta:
+      "Qual tratado de paz assinado em 1648 encerrou a Guerra dos Trinta Anos na Europa?",
+    respostas: [
+      "Tratado de Versalhes",
+      "Tratado de Utrecht",
+      "Tratado de Westfália",
+      "Tratado de Nami",
+    ],
+    correta: 2,
+  },
+
+  {
+    pergunta: "Qual é a capital da Suíça?",
+    respostas: ["Zurique", "Genebra", "Berna", "Lausanne"],
+    correta: 2,
+  },
+
+  {
+    pergunta: "Qual é o menor osso do corpo humano?",
+    respostas: ["Estribo", "Martelo", "Cúbito", "Fíbula"],
+    correta: 0,
+  },
+
+  {
+    pergunta:
+      "Em que país se situa o deserto do Atacama, um dos mais secos do mundo?",
+    respostas: ["Peru", "Argentina", "Chile", "Bolívia"],
+    correta: 2,
+  },
+
+  {
+    pergunta:
+      "A 'Crise dos Mísseis de Cuba' em 1962 quase levou a um conflito nuclear entre os Estados Unidos e qual nação?",
+    respostas: ["Cuba", "União Soviética", "China", "Alemanha Oriental"],
+    correta: 1,
+  },
+
+  {
+    pergunta:
+      "Qual é o nome do cientista que desenvolveu a teoria da relatividade geral?",
+    respostas: [
+      "Isaac Newton",
+      "Stephen Hawking",
+      "Albert Einstein",
+      "Nikola Tesla",
+    ],
+    correta: 2,
+  },
 ];
 
 function mostrarPergunta() {
@@ -44,9 +95,11 @@ function mostrarPergunta() {
   let q = perguntas[perguntaAtual];
   pergunta.innerText = q.pergunta;
   respostas.innerHTML = "";
+  const letras = ["A", "B", "C", "D"];
   q.respostas.forEach((resposta, indice) => {
     const btn = document.createElement("button");
-    btn.innerText = resposta;
+    btn.classList.add("btn-respostas");
+    btn.innerText = `${letras[indice]}. ${resposta}`;
     btn.addEventListener("click", () => verificarResposta(indice));
     respostas.appendChild(btn);
   });
@@ -55,11 +108,14 @@ function mostrarPergunta() {
 function verificarResposta(indice) {
   let q = perguntas[perguntaAtual];
 
+  const botoes = document.querySelectorAll(".btn-respostas");
+  botoes.forEach((btn) => (btn.disabled = true));
+
   if (indice === q.correta) {
-    resultado.innerHTML = "";
+    feedback.innerHTML = "";
     const paragrafo = document.createElement("p");
     paragrafo.innerText = "Acertou!";
-    resultado.appendChild(paragrafo);
+    feedback.appendChild(paragrafo);
     paragrafo.classList.add("acerto");
     pontos++;
   } else {
@@ -67,7 +123,7 @@ function verificarResposta(indice) {
     const paragrafo = document.createElement("p");
     paragrafo.innerText = "Errou!";
     paragrafo.classList.add("erro");
-    resultado.appendChild(paragrafo);
+    feedback.appendChild(paragrafo);
   }
 
   setTimeout(() => {
@@ -75,11 +131,11 @@ function verificarResposta(indice) {
 
     if (perguntaAtual < perguntas.length) {
       mostrarPergunta();
-      resultado.innerHTML = "";
+      feedback.innerHTML = "";
     } else {
       mostrarResultado();
     }
-  }, 1500);
+  }, 1200);
 }
 
 function atualizarStatus() {
@@ -100,6 +156,7 @@ function mostrarResultado() {
     perguntaAtual = 0;
     quiz.style.display = "block";
     resultado.innerHTML = "";
+    feedback.innerHTML = "";
     mostrarPergunta();
   });
   resultado.appendChild(btnReiniciar);
