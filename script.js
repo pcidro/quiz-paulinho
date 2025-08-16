@@ -53,8 +53,8 @@ const perguntas = [
 
   {
     pergunta: "Qual é a capital da Suíça?",
-    respostas: ["Zurique", "Genebra", "Berna", "Lausanne"],
-    correta: 2,
+    respostas: ["Zurique", "Berna", "Genebra", "Lausanne"],
+    correta: 1,
   },
 
   {
@@ -66,8 +66,8 @@ const perguntas = [
   {
     pergunta:
       "Em que país se situa o deserto do Atacama, um dos mais secos do mundo?",
-    respostas: ["Peru", "Argentina", "Chile", "Bolívia"],
-    correta: 2,
+    respostas: ["Peru", "Argentina", "Bolivia", "Chile"],
+    correta: 3,
   },
 
   {
@@ -83,10 +83,10 @@ const perguntas = [
     respostas: [
       "Isaac Newton",
       "Stephen Hawking",
-      "Albert Einstein",
       "Nikola Tesla",
+      "Albert Einstein",
     ],
-    correta: 2,
+    correta: 3,
   },
 ];
 
@@ -148,7 +148,6 @@ function atualizarStatus() {
 function mostrarResultado() {
   quiz.style.display = "none";
   resultado.innerText = `Quiz finalizado! Você acertou ${pontos} de ${perguntas.length} perguntas.`;
-
   const btnReiniciar = document.createElement("button");
   btnReiniciar.innerText = "Reiniciar Quiz";
   btnReiniciar.addEventListener("click", () => {

@@ -77,6 +77,7 @@ body {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   width: 100%;
   transition: all 0.3s ease;
+  color: #1e2939;
 }
 
 .btn-respostas:hover {
@@ -108,9 +109,11 @@ body {
 }
 
 .resultado {
-  margin-top: 15px;
+  font-size: 24px;
+  font-weight: bold;
+  color: #2c3e50;
   text-align: center;
-  width: 100%;
+  margin-bottom: 20px;
 }
 
 .acerto,
@@ -125,6 +128,7 @@ body {
   color: white;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
   transition: all 0.3s ease;
+  width: 100%;
 }
 
 .acerto {
